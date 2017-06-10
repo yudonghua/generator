@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!-- 引入配置文件 -->
+    <properties resource="generate.properties"/>
+
+    <classPathEntry location="${jdbc.jarDirection}" />
+
+    <context id="mysql" targetRuntime="MyBatis3" defaultModelType="flat">
+        <!--生成注释-->
+        <commentGenerator>
+            <!--生成注释日期-->
+            <property name="suppressDate" value="true"/>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!-- jdbc的连接配置 -->
+        <jdbcConnection driverClass="${jdbc.driverClassName}"
+                        connectionURL="${jdbc.url}"
+                        userId="${jdbc.user}"
+                        password="${jdbc.password}">
+        </jdbcConnection>
+
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!-- model生成配置 -->
+        <javaModelGenerator targetPackage="${modelPackage}" targetProject="${javaSrc}">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!--&lt;!&ndash; model生成配置 扔入垃圾文件夹&ndash;&gt;-->
+        <!--<javaModelGenerator targetPackage="${garbagePackage}" targetProject="${javaSrc}">-->
+            <!--<property name="enableSubPackages" value="true" />-->
+            <!--<property name="trimStrings" value="true" />-->
+        <!--</javaModelGenerator>-->
+
+        <!-- xml的mapping配置 -->
+        <sqlMapGenerator targetPackage="mybatis.mapper.order" targetProject="src/main/resources/">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!-- 根据xml生成相应的mapper接口类 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${daoPackage}"  targetProject="${javaSrc}">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <!--&lt;!&ndash; xml的mapping配置 扔入垃圾文件夹&ndash;&gt;-->
+        <!--<sqlMapGenerator targetPackage="${garbagePackage}"  targetProject="${javaSrc}">-->
+            <!--<property name="enableSubPackages" value="true" />-->
+        <!--</sqlMapGenerator>-->
+
+         <!--数据库表配置 -->
+        <!--<table schema="wmall" tableName="wm_goods_type" domainObjectName="GoodsTypeDO"/>-->
+        <!--<table schema="wmall" tableName="wm_item_category" domainObjectName="ItemCategoryDO"/>-->
+        <!--<table schema="wmall" tableName="wm_item_import" domainObjectName="ItemImportDO"/>-->
+        <!--<table schema="wmall" tableName="wm_item" domainObjectName="ItemDO"/>-->
+        <!--<table schema="wmall" tableName="wm_item_info" domainObjectName="ItemInfoDO"/>-->
+        <!--<table schema="wmall" tableName="wm_item_brand" domainObjectName="ItemBrandDO"/>-->
+        <table schema="wmall" tableName="wm_item_type" domainObjectName="ItemTypeDO"/>
+        <!--<table schema="wmall" tableName="wm_item_type_brand" domainObjectName="ItemTypeBrandDO"/>-->
+        <!--<table schema="wmall" tableName="wm_back_item" domainObjectName="BackItemDO"/>-->
+        <!--<table schema="wmall" tableName="wm_back_order" domainObjectName="BackOrderDO"/>-->
+        <!--<table schema="wmall" tableName="wm_back_order_log" domainObjectName="BackOrderLogDO"/>-->
+        <!--<table schema="wmall" tableName="wm_barter_order" domainObjectName="BarterOrderDO"/>-->
+        <!--<table schema="wmall" tableName="wm_dealer" domainObjectName="DealerDO"/>-->
+        <!--<table schema="wmall" tableName="wm_agency_address" domainObjectName="AgencyAddressDO"/>-->
+        <!--<table schema="wmall" tableName="wm_logistics" domainObjectName="LogisticsDO"/>-->
+        <!--<table schema="wmall" tableName="wm_manager" domainObjectName="ManagerDO"/>-->
+        <!--<table schema="wmall" tableName="wm_operation" domainObjectName="OperationDO"/>-->
+        <!--<table schema="wmall" tableName="wm_operation_log" domainObjectName="OperationLogDO"/>-->
+        <!--<table schema="wmall" tableName="wm_order" domainObjectName="OrderDO"/>-->
+        <!--<table schema="wmall" tableName="wm_warehouse" domainObjectName="WarehouseDO"/>-->
+    </context>
+
+    <!--<fdsaf></fdsaf>-->
+</generatorConfiguration>
