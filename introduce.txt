@@ -1,0 +1,3 @@
+add maven
+Working diretory:  ÏîÄ¿Â·¾¶
+Command line: mybatis-generator:generate -e 
